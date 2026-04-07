@@ -29,6 +29,18 @@ export function JsonLd() {
         address: postalAddress,
         sameAs: [],
         description: site.description,
+        employee: [
+          {
+            "@type": "Person",
+            name: site.team.projectHead.name,
+            jobTitle: site.team.projectHead.title,
+          },
+          {
+            "@type": "Person",
+            name: site.team.softwareEngineer.name,
+            jobTitle: site.team.softwareEngineer.title,
+          },
+        ],
       },
       {
         "@type": "WebSite",

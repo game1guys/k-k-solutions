@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { InnerPageHeader } from "@/components/InnerPageHeader";
 import { CtaBand } from "@/components/CtaBand";
+import { TeamHighlight } from "@/components/TeamHighlight";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -73,6 +74,21 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+
+        <section className="mt-20 rounded-2xl border border-white/10 bg-[#020617]/80 p-6 sm:p-10 md:p-12">
+          <p className="mx-auto max-w-2xl text-center text-sm text-slate-400">
+            Primary contacts for projects and engineering delivery at {site.name}.
+          </p>
+          <div className="mt-8">
+            <TeamHighlight heading="Leadership & team" />
+          </div>
+          <p className="mt-10 text-center text-sm text-slate-400">
+            Business inquiries:{" "}
+            <a href={`mailto:${site.email}`} className="font-semibold text-cyan-400 hover:underline">
+              {site.email}
+            </a>
+          </p>
+        </section>
 
         <h2 className="font-display mt-24 text-2xl font-bold text-white sm:text-3xl">How we work with you</h2>
         <div className="mt-8 grid gap-8 md:grid-cols-2">

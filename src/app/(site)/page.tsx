@@ -11,6 +11,7 @@ import {
   faqPreview,
 } from "@/content/home-data";
 import { CtaBand } from "@/components/CtaBand";
+import { TeamHighlight } from "@/components/TeamHighlight";
 
 const steps = [
   { n: "01", t: "Discovery", d: "Goals, audience, and tech stack — aligned in one workshop." },
@@ -104,6 +105,12 @@ export default function HomePage() {
             we combine engineering discipline with marketing rigor — so product releases and growth
             experiments reinforce each other instead of competing for attention.
           </p>
+        </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-gradient-to-b from-[#020617] via-[#030712] to-[#030712] py-12 sm:py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <TeamHighlight heading="Who you’ll work with" />
         </div>
       </section>
 

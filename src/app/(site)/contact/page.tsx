@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { InnerPageHeader } from "@/components/InnerPageHeader";
 import { ContactForm } from "@/components/ContactForm";
+import { TeamHighlight } from "@/components/TeamHighlight";
 import { site, locationLines } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -19,6 +20,10 @@ export default function ContactPage() {
       />
 
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mb-12 max-w-4xl">
+          <TeamHighlight heading="Your contacts" />
+        </div>
+
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <p className="text-slate-400 leading-relaxed">

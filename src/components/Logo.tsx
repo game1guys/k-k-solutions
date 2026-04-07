@@ -14,14 +14,17 @@ export function Logo({ className = "" }: { className?: string }) {
         aria-hidden
       >
         <rect width="44" height="44" rx="12" className="fill-[#0c1222]" />
+        {/* Two matching “K” marks — second was vertical bars and read as “F” */}
         <path
-          d="M10 12h4.2v8.4L22 12h5.2l-8.6 9.2L28 32h-5.4l-6.4-7.8-2 2.1V32H10V12z"
-          className="fill-[#22d3ee]"
+          fill="#22d3ee"
+          d="M8 11h3.8v7.6L18 11h4.7l-7.8 8.4L25 31h-4.9l-5.8-7.1-1.8 1.9V31H8V11z"
         />
-        <path
-          d="M24 12h10v3.8h-5.6v3.2H33v3.8h-4.6v9.2H24V12z"
-          className="fill-[#a78bfa]"
-        />
+        <g transform="translate(14.5 0)">
+          <path
+            fill="#a78bfa"
+            d="M8 11h3.8v7.6L18 11h4.7l-7.8 8.4L25 31h-4.9l-5.8-7.1-1.8 1.9V31H8V11z"
+          />
+        </g>
       </svg>
       <div className="flex flex-col leading-tight">
         <span className="font-semibold tracking-tight text-white text-lg sm:text-xl">

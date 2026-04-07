@@ -106,6 +106,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${syne.variable}`}>
       <body className="min-h-screen bg-[#030712] font-sans text-slate-100 antialiased">
+        {/* Critical fallback if Tailwind CSS bundle fails to load (stale cache, wrong project root) */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `:root{color-scheme:dark}html,body{min-height:100%;background-color:#030712;color:#f1f5f9;margin:0}`,
+          }}
+        />
         <JsonLd />
         {children}
       </body>

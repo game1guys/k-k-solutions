@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { site, telDial } from "@/lib/site";
 import { domainExperience } from "@/content/domains";
 import { servicesPreview } from "@/content/services-preview";
 import {
@@ -400,11 +400,18 @@ export default function HomePage() {
                     {site.email}
                   </a>
                 </p>
-                <p>
+                <p className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
                   <span className="text-slate-500">Phone · </span>
-                  <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-cyan-400">
+                  <a href={`tel:${telDial(site.phone)}`} className="hover:text-cyan-400">
                     {site.phone}
                   </a>
+                  <span className="text-slate-500">·</span>
+                  <a href={`tel:${telDial(site.team.projectHead.phone)}`} className="hover:text-cyan-400">
+                    {site.team.projectHead.phone}
+                  </a>
+                  <span className="text-slate-500 text-sm">
+                    ({site.team.projectHead.name.split(" ")[0]})
+                  </span>
                 </p>
               </div>
             </div>

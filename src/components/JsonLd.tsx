@@ -1,6 +1,7 @@
-import { site } from "@/lib/site";
+import { site, telDial } from "@/lib/site";
 
-const tel = site.phone.replace(/\s/g, "");
+const mainTel = telDial(site.phone);
+const headTel = telDial(site.team.projectHead.phone);
 
 const postalAddress = {
   "@type": "PostalAddress",
@@ -25,7 +26,24 @@ export function JsonLd() {
           url: `${site.url}/favicon.ico`,
         },
         email: site.email,
-        telephone: tel,
+        telephone: mainTel,
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: mainTel,
+            email: site.email,
+            contactType: "customer support",
+            areaServed: "IN",
+            availableLanguage: ["English", "Hindi"],
+          },
+          {
+            "@type": "ContactPoint",
+            telephone: headTel,
+            contactType: "sales",
+            name: `${site.team.projectHead.name} (${site.team.projectHead.title})`,
+            areaServed: "IN",
+          },
+        ],
         address: postalAddress,
         sameAs: [],
         description: site.description,
@@ -34,6 +52,7 @@ export function JsonLd() {
             "@type": "Person",
             name: site.team.projectHead.name,
             jobTitle: site.team.projectHead.title,
+            telephone: headTel,
           },
           {
             "@type": "Person",
@@ -57,7 +76,7 @@ export function JsonLd() {
         name: site.name,
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=630&fit=crop",
         url: site.url,
-        telephone: tel,
+        telephone: mainTel,
         email: site.email,
         address: postalAddress,
         priceRange: "$$",

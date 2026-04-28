@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 const paths = [
   "",
   "/services",
+  "/portfolio",
   "/services/web-development",
   "/services/app-development",
   "/services/digital-marketing",

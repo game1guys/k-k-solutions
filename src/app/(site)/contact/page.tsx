@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { InnerPageHeader } from "@/components/InnerPageHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { TeamHighlight } from "@/components/TeamHighlight";
-import { site, locationLines } from "@/lib/site";
+import { site, locationLines, telDial } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -50,12 +50,18 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-xs font-medium uppercase tracking-wider text-slate-500">Phone</p>
-                <a
-                  href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="mt-1 block text-lg text-slate-200 hover:text-cyan-400"
-                >
-                  {site.phone}
-                </a>
+                <p className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-lg text-slate-200">
+                  <a href={`tel:${telDial(site.phone)}`} className="hover:text-cyan-400">
+                    {site.phone}
+                  </a>
+                  <span className="text-slate-600">·</span>
+                  <a href={`tel:${telDial(site.team.projectHead.phone)}`} className="hover:text-cyan-400">
+                    {site.team.projectHead.phone}
+                  </a>
+                  <span className="text-sm font-normal text-slate-500">
+                    ({site.team.projectHead.name.split(" ")[0]}, {site.team.projectHead.title})
+                  </span>
+                </p>
               </div>
               <p className="text-sm text-slate-500">
                 Response time: usually within one business day for new inquiries. Urgent production

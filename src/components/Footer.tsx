@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { site, locationLines } from "@/lib/site";
+import { site, locationLines, telDial } from "@/lib/site";
 
 const serviceLinks = [
   { href: "/services/web-development", label: "Web development" },
@@ -10,6 +10,7 @@ const serviceLinks = [
 
 const companyLinks = [
   { href: "/services", label: "All services" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/industries", label: "Industries" },
   { href: "/tools", label: "Tools & stack" },
   { href: "/why-us", label: "Why us" },
@@ -73,9 +74,19 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-cyan-400">
-                  {site.phone}
-                </a>
+                <span className="block text-slate-500">Phone</span>
+                <span className="mt-0.5 flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+                  <a href={`tel:${telDial(site.phone)}`} className="hover:text-cyan-400">
+                    {site.phone}
+                  </a>
+                  <span className="text-slate-600">·</span>
+                  <a href={`tel:${telDial(site.team.projectHead.phone)}`} className="hover:text-cyan-400">
+                    {site.team.projectHead.phone}
+                  </a>
+                  <span className="text-slate-500">
+                    ({site.team.projectHead.name.split(" ")[0]})
+                  </span>
+                </span>
               </li>
             </ul>
           </div>

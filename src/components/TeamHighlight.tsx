@@ -1,4 +1,4 @@
-import { site } from "@/lib/site";
+import { site, telDial } from "@/lib/site";
 
 /** Prominent display for project head & engineer — not used in footer */
 export function TeamHighlight({
@@ -27,6 +27,12 @@ export function TeamHighlight({
               {site.team.projectHead.name}
             </span>
           </p>
+          <a
+            href={`tel:${telDial(site.team.projectHead.phone)}`}
+            className="mt-4 inline-block text-base font-medium text-cyan-300/95 hover:text-cyan-200 sm:text-lg"
+          >
+            {site.team.projectHead.phone}
+          </a>
         </div>
         <div className="rounded-2xl border border-violet-500/40 bg-gradient-to-br from-violet-500/15 via-[#0f172a] to-[#020617] px-6 py-8 text-center shadow-[0_0_40px_-12px_rgba(139,92,246,0.3)] sm:px-8 sm:py-10 sm:text-left">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-violet-300/90">

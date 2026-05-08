@@ -13,6 +13,12 @@ const postalAddress = {
 };
 
 export function JsonLd() {
+  const sameAs = [
+    site.twitterHandle?.startsWith("@")
+      ? `https://twitter.com/${site.twitterHandle.slice(1)}`
+      : undefined,
+  ].filter(Boolean);
+
   const data = {
     "@context": "https://schema.org",
     "@graph": [
@@ -45,7 +51,7 @@ export function JsonLd() {
           },
         ],
         address: postalAddress,
-        sameAs: [],
+        sameAs,
         description: site.description,
         employee: [
           {

@@ -31,7 +31,9 @@ export function StarRating({ value, className }: { value: number; className?: st
           <StarIcon key={i} className="h-5 w-5 shrink-0 text-white/15" />
         ),
       )}
-      <span className="ml-1.5 text-sm font-medium text-slate-400 tabular-nums">{value.toFixed(1)}</span>
+      <span className="ml-1.5 text-sm font-medium text-slate-400 tabular-nums">
+        {Number.isInteger(value) ? value : value.toFixed(1)}
+      </span>
     </div>
   );
 }

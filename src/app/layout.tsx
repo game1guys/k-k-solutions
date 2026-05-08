@@ -26,6 +26,12 @@ export const metadata: Metadata = {
     template: `%s | ${site.shortName}`,
   },
   description: site.description,
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
   keywords: [
     "K&K Digital Solutions",
     "web development India",

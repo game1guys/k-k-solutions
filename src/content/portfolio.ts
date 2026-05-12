@@ -6,6 +6,10 @@ export type PortfolioEntry = {
   displayDomain?: string;
   clientName: string;
   projectName: string;
+  imageUrl: string;
+  imageAlt: string;
+  logoUrl: string;
+  logoAlt: string;
   rating: 4 | 4.5 | 5;
   review: string;
   focus: string[];
@@ -18,6 +22,11 @@ export const portfolioProjects: PortfolioEntry[] = [
     displayDomain: "oshu.in",
     clientName: "Amit Chauhan",
     projectName: "Oshu Logistics",
+    imageUrl:
+      "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=900&h=640&fit=crop&q=80",
+    imageAlt: "Logistics trucks and warehouse operations",
+    logoUrl: "https://www.google.com/s2/favicons?domain=oshu.in&sz=128",
+    logoAlt: "Oshu Logistics logo",
     rating: 4.5,
     focus: ["Corporate web", "Logistics"],
     review:
@@ -27,6 +36,11 @@ export const portfolioProjects: PortfolioEntry[] = [
     slug: "arjun-paints",
     clientName: "Mulakalapalli Arjun",
     projectName: "Arjun Paints",
+    imageUrl:
+      "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=900&h=640&fit=crop&q=80",
+    imageAlt: "Paint tools and colour samples for a brand website",
+    logoUrl: "https://arjunpaints.com/images/arjun-paints-logo.png",
+    logoAlt: "Arjun Paints logo",
     rating: 5,
     focus: ["Brand presence", "Web"],
     review:
@@ -37,11 +51,16 @@ export const portfolioProjects: PortfolioEntry[] = [
     websiteUrl: "https://morvinandan.com",
     displayDomain: "morvinandan.com",
     clientName: "Amit Chauhan",
-    projectName: "Morvi Nandan — a choice brand",
+    projectName: "Morvi Nandan — Achar & Food Brand",
+    imageUrl:
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=900&h=640&fit=crop&q=80",
+    imageAlt: "Indian spices and ingredients used in achar and food products",
+    logoUrl: "https://morvinandan.co.in/_next/image?url=%2Fimages%2Fmorvi-logo-brand.png&w=128&q=75",
+    logoAlt: "Morvi Nandan logo",
     rating: 4.5,
-    focus: ["Brand site", "E-commerce ready story"],
+    focus: ["Food brand", "Achar products", "E-commerce ready story"],
     review:
-      "Morvi Nandan needed a digital home that felt premium and matched our retail story. The new site balances product narrative with performance — it loads fast and reads well on every device we tested. SEO foundations and contact flows were thought through, not bolted on later. A very solid partnership; we are proud to point customers to morvinandan.com.",
+      "Morvi Nandan needed a digital home that felt premium and matched our achar and food-product story. The new site balances product narrative with performance — it loads fast and reads well on every device we tested. SEO foundations and contact flows were thought through, not bolted on later. A very solid partnership; we are proud to point customers to morvinandan.com.",
   },
   {
     slug: "daily-khata",
@@ -49,6 +68,11 @@ export const portfolioProjects: PortfolioEntry[] = [
     displayDomain: "dailykhata.vercel.app",
     clientName: "Prasenjit Mishra",
     projectName: "Daily Khata",
+    imageUrl:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&h=640&fit=crop&q=80",
+    imageAlt: "Accounting dashboard, records, and daily business finance workflow",
+    logoUrl: "/logos/daily-khata.png",
+    logoAlt: "Daily Khata logo",
     rating: 4,
     focus: ["Product web app", "Vercel", "Accounts & workflows"],
     review:
@@ -60,6 +84,11 @@ export const portfolioProjects: PortfolioEntry[] = [
     displayDomain: "anayaraa.com",
     clientName: "Ashwin Yadav",
     projectName: "Anayraa",
+    imageUrl:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&h=640&fit=crop&q=80",
+    imageAlt: "Modern retail and lifestyle brand storefront",
+    logoUrl: "https://www.google.com/s2/favicons?domain=anayaraa.com&sz=128",
+    logoAlt: "Anayraa logo",
     rating: 4,
     focus: ["Brand presence", "Marketing site", "Responsive web"],
     review:
@@ -71,6 +100,11 @@ export const portfolioProjects: PortfolioEntry[] = [
     displayDomain: "kinaracafe.com",
     clientName: "Prasenjit Mishra",
     projectName: "Kinara Cafe",
+    imageUrl:
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900&h=640&fit=crop&q=80",
+    imageAlt: "Warm cafe interior with coffee and hospitality ambience",
+    logoUrl: "https://www.google.com/s2/favicons?domain=kinaracafe.com&sz=128",
+    logoAlt: "Kinara Cafe logo",
     rating: 4,
     focus: ["Hospitality", "Menu & ambience", "Local discovery"],
     review:

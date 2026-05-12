@@ -7,6 +7,21 @@ const nextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.google.com",
+        pathname: "/s2/favicons",
+      },
+      {
+        protocol: "https",
+        hostname: "arjunpaints.com",
+        pathname: "/images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "morvinandan.co.in",
+        pathname: "/_next/image",
+      },
     ],
     // Local dev: avoid optimizer fetch issues; production still optimizes on Vercel
     unoptimized: process.env.NODE_ENV === "development",

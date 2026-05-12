@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { InnerPageHeader } from "@/components/InnerPageHeader";
 import { StarRating } from "@/components/StarRating";
@@ -90,11 +91,14 @@ export default function PortfolioPage() {
                 hue === "cyan"
                   ? "shadow-cyan-500/[0.07] group-hover:shadow-cyan-500/15"
                   : "shadow-violet-500/[0.07] group-hover:shadow-violet-500/15";
+              const imageGlowClass =
+                hue === "cyan" ? "from-cyan-500/30" : "from-violet-500/30";
 
               return (
                 <li key={p.slug}>
                   <article
-                    className={`group relative overflow-hidden rounded-3xl border border-white/[0.09] bg-gradient-to-b from-white/[0.06] via-white/[0.02] to-transparent p-6 shadow-xl shadow-black/25 backdrop-blur-sm transition duration-300 hover:border-white/[0.14] sm:p-8 md:p-10 ${glowClass}`}
+                    id={p.slug}
+                    className={`group relative overflow-hidden rounded-3xl border border-white/[0.09] bg-gradient-to-b from-white/[0.06] via-white/[0.02] to-transparent p-4 shadow-xl shadow-black/25 backdrop-blur-sm transition duration-300 hover:border-white/[0.14] sm:p-5 md:p-6 ${glowClass}`}
                   >
                     <div
                       className={`absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${barClass} opacity-95`}
@@ -102,69 +106,115 @@ export default function PortfolioPage() {
                     />
                     <div className="absolute -right-16 -top-20 size-56 rounded-full bg-gradient-to-br from-white/[0.06] to-transparent blur-2xl transition duration-500 group-hover:from-white/[0.09]" aria-hidden />
 
-                    <div className="relative flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
-                      <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-center gap-3">
-                          <span
-                            className="font-mono text-[11px] font-medium uppercase tracking-widest text-slate-500"
-                            aria-hidden
-                          >
-                            {String(i + 1).padStart(2, "0")}
+                    <div className="relative grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:items-stretch">
+                      <div className="relative min-h-[260px] overflow-hidden rounded-2xl bg-slate-950 ring-1 ring-white/[0.08] sm:min-h-[330px] lg:min-h-full">
+                        <Image
+                          src={p.imageUrl}
+                          alt={p.imageAlt}
+                          fill
+                          sizes="(min-width: 1024px) 38vw, 100vw"
+                          className="object-cover transition duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/92 via-[#030712]/20 to-transparent" />
+                        <div
+                          className={`absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t ${imageGlowClass} to-transparent opacity-70`}
+                          aria-hidden
+                        />
+                        <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/80 backdrop-blur">
+                          <span className="relative size-7 overflow-hidden rounded-full bg-white ring-1 ring-white/30">
+                            <Image
+                              src={p.logoUrl}
+                              alt={p.logoAlt}
+                              fill
+                              sizes="28px"
+                              className="object-contain p-1"
+                            />
                           </span>
-                          <span className="hidden h-px w-8 bg-gradient-to-r from-white/25 to-transparent sm:block" aria-hidden />
-                          <h2 className="font-display text-xl font-bold text-white sm:text-2xl">
+                          <span>{String(i + 1).padStart(2, "0")} / Case study</span>
+                        </div>
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <p className="text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/90">
+                            {p.focus[0]}
+                          </p>
+                          <h2 className="font-display mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                             {p.projectName}
                           </h2>
                         </div>
-                        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
-                          <p className="text-sm text-slate-500">
-                            Client · <span className="text-slate-300">{p.clientName}</span>
-                          </p>
-                          {p.websiteUrl && p.displayDomain ? (
-                            <a
-                              href={p.websiteUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-300 transition hover:border-cyan-400/50 hover:bg-cyan-500/15"
-                            >
-                              {p.displayDomain}
-                              <span aria-hidden className="text-[10px] opacity-80">
-                                ↗
-                              </span>
-                            </a>
-                          ) : (
-                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-500">
-                              Inquiry-led / offline delivery
-                            </span>
-                          )}
-                        </div>
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {p.focus.map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-lg border border-white/10 bg-black/25 px-3 py-1.5 text-xs font-medium text-slate-300"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
                       </div>
-                      <div className="shrink-0 md:pt-1">
-                        <StarRating value={p.rating} />
-                      </div>
-                    </div>
 
-                    <div className="relative mt-8 overflow-hidden rounded-2xl bg-black/35 p-6 ring-1 ring-white/[0.06] sm:p-8">
-                      <span
-                        className="pointer-events-none absolute -left-1 -top-2 font-display text-7xl font-bold leading-none text-white/[0.06] sm:text-8xl"
-                        aria-hidden
-                      >
-                        &ldquo;
-                      </span>
-                      <p className="relative text-[0.95rem] leading-relaxed text-slate-300 sm:text-base">
-                        {p.review}
-                      </p>
-                      <p className="relative mt-5 text-sm font-medium text-slate-500">— {p.clientName}</p>
+                      <div className="flex min-w-0 flex-col justify-between rounded-2xl bg-black/30 p-5 ring-1 ring-white/[0.06] sm:p-7 md:p-8">
+                        <div>
+                          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                            <div className="flex min-w-0 items-start gap-3">
+                              <span className="relative mt-0.5 size-11 shrink-0 overflow-hidden rounded-2xl bg-white p-1.5 shadow-lg shadow-black/25 ring-1 ring-white/20">
+                                <Image
+                                  src={p.logoUrl}
+                                  alt={p.logoAlt}
+                                  fill
+                                  sizes="44px"
+                                  className="object-contain p-1.5"
+                                />
+                              </span>
+                              <div className="min-w-0">
+                                <p className="text-sm text-slate-500">
+                                  Client · <span className="text-slate-300">{p.clientName}</span>
+                                </p>
+                                <p className="mt-1 truncate text-sm font-semibold text-white">
+                                  {p.projectName}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="shrink-0">
+                              <StarRating value={p.rating} />
+                            </div>
+                          </div>
+                          <div className="mt-4 flex flex-wrap items-center gap-2">
+                            {p.websiteUrl && p.displayDomain ? (
+                              <a
+                                href={p.websiteUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-300 transition hover:border-cyan-400/50 hover:bg-cyan-500/15"
+                              >
+                                {p.displayDomain}
+                                <span aria-hidden className="text-[10px] opacity-80">
+                                  ↗
+                                </span>
+                              </a>
+                            ) : (
+                              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-500">
+                                Inquiry-led / offline delivery
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="mt-6 flex flex-wrap gap-2">
+                            {p.focus.map((tag) => (
+                              <span
+                                key={tag}
+                                className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-300"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <blockquote className="relative mt-8 overflow-hidden rounded-2xl bg-white/[0.035] p-5 ring-1 ring-white/[0.06] sm:p-6">
+                          <span
+                            className="pointer-events-none absolute -left-1 -top-2 font-display text-7xl font-bold leading-none text-white/[0.06] sm:text-8xl"
+                            aria-hidden
+                          >
+                            &ldquo;
+                          </span>
+                          <p className="relative text-[0.95rem] leading-relaxed text-slate-300 sm:text-base">
+                            {p.review}
+                          </p>
+                          <footer className="relative mt-5 text-sm font-medium text-slate-500">
+                            — {p.clientName}
+                          </footer>
+                        </blockquote>
+                      </div>
                     </div>
                   </article>
                 </li>
